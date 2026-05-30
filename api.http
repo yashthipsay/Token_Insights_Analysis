@@ -1,0 +1,32 @@
+### Token Insight & Analytics API Test File
+# You can run these requests directly using VS Code extensions like "REST Client" or "HTTPYac"
+
+@baseUrl = http://localhost:3000
+
+---
+
+### 1. Token Insight API
+# Retrieves market data for a given token from CoinGecko and analyzes it using the configured AI model.
+
+# cURL Equivalent:
+# curl -X POST http://localhost:3000/api/token/chainlink/insight \
+#      -H "Content-Type: application/json" \
+#      -d '{"vs_currency": "usd", "history_days": 30}'
+
+POST {{baseUrl}}/api/token/chainlink/insight
+Content-Type: application/json
+
+{
+  "vs_currency": "aave",
+  "history_days": 7
+}
+
+###
+
+### 2. HyperLiquid Wallet Daily PnL API
+# Retrieves historical trades and funding for a given HyperLiquid wallet address and calculates daily PnL.
+
+# cURL Equivalent:
+# curl -X GET "http://localhost:3000/api/hyperliquid/0x0000000000000000000000000000000000000000/pnl?start=2024-01-01&end=2025-01-01"
+
+GET {{baseUrl}}/api/hyperliquid/0x0000000000000000000000000000000000000000/pnl?start=2024-01-01&end=2025-01-01
